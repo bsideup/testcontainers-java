@@ -1,0 +1,11 @@
+rootProject.name = 'testcontainers-parent'
+
+include ':core'
+
+include ':modules:jdbc'
+include ':modules:mysql'
+include ':modules:postgresql'
+include ':modules:selenium'
+include ':modules:nginx'
+include ':modules:mariadb'
+include ':modules:jdbc-test'

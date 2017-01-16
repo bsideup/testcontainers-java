@@ -1,0 +1,23 @@
+plugins {
+    id 'nebula.provided-base' version '3.0.3'
+    id 'com.github.bsideup.maven-sync' version '1.0.4' apply false
+}
+
+subprojects {
+    apply plugin: 'nebula.provided-base'
+    apply plugin: 'java'
+    apply plugin: 'com.github.bsideup.maven-sync'
+
+    sourceCompatibility = targetCompatibility = 1.8
+
+    task packageSources(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts.archives packageSources
+
+    repositories {
+        jcenter()
+    }
+}

@@ -43,3 +43,10 @@ dependency-reduced-pom.xml
 # Gitbook
 _book/
 node_modules/
+
+# Gradle
+.gradle/
+build/
+
+# Temporary TestContainers' files
+.testcontainers-*/
