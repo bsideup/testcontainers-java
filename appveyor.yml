@@ -9,7 +9,7 @@ install:
   - .\docker-machine.exe ls
   - .\docker-machine.exe env --shell powershell dev
   - ps: .\docker-machine.exe env --shell powershell dev | iex
-  - ps: .\docker.exe version
+  - ps: docker version
   - cinst docker jdk8
 
 build_script:
