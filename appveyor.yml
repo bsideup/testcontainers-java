@@ -14,7 +14,4 @@ test_script:
   - .\docker-machine.exe env --shell powershell dev
   - ps: .\docker-machine.exe env --shell powershell dev | iex
   - ps: .\docker.exe version
-  - cmd: .\mvnw.bat clean package -B -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
-
-test_script:
-  - .\mvnw.bat clean install --batch-mode
+  - cmd: .\mvnw.bat clean install --batch-mode
