@@ -1,6 +1,5 @@
 environment:
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
-  PATH: ""
 install:
   - AppVeyor DownloadFile http://download.virtualbox.org/virtualbox/5.0.14/VirtualBox-5.0.14-105127-Win.exe
   - .\VirtualBox-5.0.14-105127-Win.exe -s -l -msiparams ADDLOCAL=VBoxApplication,VBoxUSB,VBoxNetworkAdp REBOOT=ReallySuppress
