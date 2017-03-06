@@ -7,12 +7,11 @@ install:
   - .\VirtualBox-5.0.14-105127-Win.exe -s -l -msiparams ADDLOCAL=VBoxApplication,VBoxUSB,VBoxNetworkAdp REBOOT=ReallySuppress
   - AppVeyor DownloadFile https://github.com/docker/machine/releases/download/v0.10.0/docker-machine-Windows-x86_64.exe
   - copy docker-machine-Windows-x86_64.exe docker-machine.exe
-  - .\docker-machine.exe -D create -d virtualbox --virtualbox-no-vtx-check --virtualbox-nat-nictype "Am79C973" --virtualbox-hostonly-nictype "Am79C973" default || true && exit 0
+  - .\docker-machine.exe -D create --driver hyperv default
   - .\docker-machine.exe ls
   - .\docker-machine.exe env --shell powershell default
   - cinst docker jdk8
   - refreshenv
-  - docker version
 
 build_script: true
 
