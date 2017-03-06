@@ -3,15 +3,11 @@ os: Windows Server 2012 R2
 environment:
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
 install:
-  - cinst jdk8 docker
+  - cinst jdk8 docker mingw virtualbox docker-machine
   - cmd: refreshenv
   - cmd: java -version
-  - AppVeyor DownloadFile http://download.virtualbox.org/virtualbox/5.0.14/VirtualBox-5.0.14-105127-Win.exe
-  - .\VirtualBox-5.0.14-105127-Win.exe -s -l -msiparams ADDLOCAL=VBoxApplication,VBoxUSB,VBoxNetworkAdp REBOOT=ReallySuppress
-  - AppVeyor DownloadFile https://github.com/docker/machine/releases/download/v0.10.0/docker-machine-Windows-i386.exe
-  - copy docker-machine-Windows-i386.exe docker-machine.exe
   - cmd: refreshenv
-  - - .\docker-machine.exe -D create -d virtualbox --virtualbox-no-vtx-check --virtualbox-nictype "Am79C973" --virtualbox-hostonly-nictype "Am79C973" --virtualbox-boot2docker-url https://github.com/StefanScherer/boot2docker/releases/download/v1.10.1-386/boot2docker.iso dev
+  - cmd: docker-machine create -d virtualbox default
   - cmd: docker version
 
 build_script:
