@@ -3,8 +3,6 @@ platform:
 environment:
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
 install:
-  - AppVeyor DownloadFile http://download.virtualbox.org/virtualbox/5.0.14/VirtualBox-5.0.14-105127-Win.exe
-  - .\VirtualBox-5.0.14-105127-Win.exe -s -l -msiparams ADDLOCAL=VBoxApplication,VBoxUSB,VBoxNetworkAdp REBOOT=ReallySuppress
   - AppVeyor DownloadFile https://github.com/docker/machine/releases/download/v0.10.0/docker-machine-Windows-x86_64.exe
   - copy docker-machine-Windows-x86_64.exe docker-machine.exe
   - .\docker-machine.exe -D create --driver hyperv default
@@ -12,6 +10,8 @@ install:
   - .\docker-machine.exe env --shell powershell default
   - cinst docker jdk8
   - refreshenv
+  - ps: .\docker-machine.exe env --shell powershell default | iex
+  - ps: docker run hello-world
 
 build_script: true
 
