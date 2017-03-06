@@ -11,7 +11,7 @@ install:
   - cinst docker jdk8
   - refreshenv
 
-build_script: false
+build_script: true
 
 test_script:
   # make docker-machine.exe available on PATH
