@@ -11,13 +11,12 @@ install:
   - cinst docker
   - refreshenv
   - ps: .\docker-machine.exe env --shell powershell default | iex
-  - ps: docker version
   - cinst  jdk8
 
 build_script:
   - cmd: .\mvnw.bat clean package -B -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
 test_script:
+  # make docker-machine.exe available on PATH
   - "SET PATH=%APPVEYOR_BUILD_FOLDER%;%PATH%"
-  - ps: .\docker-machine.exe env --shell powershell default | iex
   - ps: .\mvnw.bat clean install --batch-mode
