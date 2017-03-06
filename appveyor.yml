@@ -7,7 +7,7 @@ install:
   - cmd: refreshenv
   - cmd: java -version
   - cmd: refreshenv
-  - cmd: docker-machine create -d virtualbox default
+  - cmd: docker-machine create -d virtualbox --virtualbox-no-vtx-check --virtualbox-nictype "Am79C973" --virtualbox-hostonly-nictype "Am79C973" --virtualbox-boot2docker-url https://github.com/StefanScherer/boot2docker/releases/download/v1.10.1-386/boot2docker.iso default
   - cmd: docker version
 
 build_script:
