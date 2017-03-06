@@ -5,7 +5,7 @@ environment:
 install:
   - AppVeyor DownloadFile https://github.com/docker/machine/releases/download/v0.10.0/docker-machine-Windows-x86_64.exe
   - copy docker-machine-Windows-x86_64.exe docker-machine.exe
-  - .\docker-machine.exe -D create --driver hyperv default
+  - ps: .\docker-machine.exe -D create --driver hyperv default
   - .\docker-machine.exe ls
   - .\docker-machine.exe env --shell powershell default
   - cinst docker jdk8
